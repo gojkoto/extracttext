@@ -168,8 +168,9 @@ function save_files_to_ext_storage($contenthash,$filename){
 	
 	$srcFile = $CFG->dataroot.'/filedir/'.$contenthash_folder.$contenthash;
 	
+	$file_part = explode(".",$filename);
 	
-	$dstFile = $admin_hdfs_remote_folder.$filename;
+	$dstFile = $admin_hdfs_remote_folder.$contenthash.".".$file_part[1];
 
 	$send = false;
 	$connection = ssh2_connect($admin_hdfs_server, $admin_hdfs_port);
